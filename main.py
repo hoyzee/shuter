@@ -22,8 +22,8 @@ clock = pygame.time.Clock()
 class Gamesprite(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height, img, speed):
         super().__init__()
-        self.image = pygame.image.load(file_path(imag))
-        self.image = pygame.transform.scale(self.image, (widht, height))
+        self.image = pygame.image.load(file_path(img))
+        self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -37,7 +37,7 @@ class Player(Gamesprite):
         super().__init__(x, y, width, height, img, speed)
 
     def update(self):
-        keys = pygame = keys.get_pressed
+        keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.rect.x -= self.speed
         if keys[pygame.K_RIGHT]:
@@ -45,6 +45,10 @@ class Player(Gamesprite):
 
     def fire(self):
         pass
+
+player = Player(300, 400, 70, 70, "player.jfif", 5)
+
+
 
 
 
@@ -60,6 +64,9 @@ while game:
 
     if play == True:
         window.blit(image_background,(0, 0))
+
+        player.reset()
+        player.update()
 
     clock.tick(FPS)
     pygame.display.update()
