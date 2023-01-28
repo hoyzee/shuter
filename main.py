@@ -18,6 +18,21 @@ window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Шутер")
 clock = pygame.time.Clock()
 
+
+class Gamesprite(pygame.sprite.Sprite):
+    def __init__(self, x, y, width, height, img, speed):
+        super().__init__()
+        self.image = pygame.image.load(file_path(imag))
+        self.image = pygame.transform.scale(self.image, (widht, height))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.speed = speed
+    
+    def reset(self):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
+
 game = True
 play = True
 
